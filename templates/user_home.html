@@ -1,0 +1,10 @@
+
+{% if user.is_authenticated and role == 'user'%}
+<div>
+    This is User Home
+</div>
+
+{%else %}
+either you are not admin or not authenticated
+
+{% endif %}
