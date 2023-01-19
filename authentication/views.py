@@ -63,34 +63,42 @@ def register_view(request):
 def logout_view(request):
     if(request.user.is_authenticated):
         logout(request=request)
-        return HttpResponse('logged out')
+        return redirect('login')
     else:
-        return HttpResponse('user not authenticated')
+        return redirect('login')
 
 
 def admin_home(request):
-    appuser = request.user.appusers
-    data = {
-        'role': 'admin'
-    }
-    if(appuser.roles.filter(name="Admin").exists()):
-        data['role'] = 'admin'
-    else:
-        data['role'] = 'user'
+    if(request.user.is_authenticated):
 
-    return render(request, 'admin_home.html', {'role':data['role']})
+        appuser = request.user.appusers
+        data = {
+            'role': 'admin'
+        }
+        if(appuser.roles.filter(name="Admin").exists()):
+            data['role'] = 'admin'
+        else:
+            data['role'] = 'user'
+
+        return render(request, 'admin_home.html', {'role':data['role']})
+    else:
+        return redirect('login')
+
 
 def user_home(request):
-    appuser = request.user.appusers
-    print(appuser)
-    data = {
-        'role': 'admin'
-    }
-    if (appuser.roles.filter(name="Admin").exists()):
-        data['role'] = 'admin'
+    if(request.user.is_authenticated):
+        appuser = request.user.appusers
+        print(appuser)
+        data = {
+            'role': 'admin'
+        }
+        if (appuser.roles.filter(name="Admin").exists()):
+            data['role'] = 'admin'
+        else:
+            data['role'] = 'user'
+        return render(request, 'user_home.html', {'role':data['role']})
     else:
-        data['role'] = 'user'
-    return render(request, 'user_home.html', {'role':data['role']})
+        return redirect('login')
 
 class ResetPasswordView(View):
     def get(self, request):
