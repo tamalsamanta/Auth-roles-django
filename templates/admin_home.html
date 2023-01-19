@@ -1,7 +1,84 @@
 {% if user.is_authenticated and role == 'admin'%}
-<div>
-    This is Admin Home
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        }
+        .banner{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url("https://www.shutterstock.com/image-photo/blurred-calendar-pencil-blue-tone-260nw-641052127.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        .navbar{
+            width: 100%;
+            margin: auto;
+            padding: 35px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar ul
+        {
+           display:flex;
+           list-style:none;
+           margin-right:30px;
+
+
+
+
+        }
+
+        .navbar ul li
+        {
+           margin:0px 20px;
+
+
+
+        }
+        .navbar ul li a
+        {
+            text-decoration:none;
+           padding:5px 10px ;
+           color:whitesmoke;
+           border-radius:30px;
+           font-size:16px;
+           font-weight:bold;
+        }
+          .navbar ul li a:hover
+          {
+
+             background-color:grey;
+             color:black;
+          }
+
+
+
+    </style>
+</head>
+
+<body>
+<div class="banner">
+    <div class="navbar">
+        <div>
+            This is Admin Home
+        </div>
+        <div>
+            <ul>
+
+                    <li><a href="/logout/">Logout</a></li>
+                    <li><a href="/reset_password/">Reset Password</a></li>
+            </ul>
+        </div>
+    </div>
+
 </div>
+</body>
 {% else %}
 
 Admin not authenticated or you are not admin
