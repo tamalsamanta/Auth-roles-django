@@ -114,3 +114,6 @@ class ResetPasswordView(View):
         else:
             print(form.errors)
             return render(request, 'reset_password.html', {'form': form})
+
+def CalendarUI_view(request):
+    return render(request,'CalendarUI.html')

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.0.3/index.global.js" integrity="sha512-BNKBTegUK/ol/eu9TulDCgUwFO9ZQmclYjcmq5BNpeOByYo4GpUUODHzvV7I2xtoxti3lVrfB5g0t4fddj3vbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <div id='calendar'></div>
+  </body>
+  <script>
+    var startDate, endDate;
+    function addDropDown(selectionInfo) {
+
+    
+
+    }
+    const calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      editable:true,
+      selectable:true,
+      select:function(info){
+        //when some date is selected, or many date is selected then this function will be called
+        //startDate and endDate will contain the start of the selection and end of the selection.
+        startDate = new Date(info.start.toLocaleString());
+        endDate = new Date(info.end.toLocaleString());
+        endDate.setDate(endDate.getDate() -1);
+
+
+        //here you have access to start date and end date
+        console.log(startDate, endDate);
+        addDropDown(info);
+      }
+    });
+    calendar.render();
+</script>
+  </script>
+</html>
