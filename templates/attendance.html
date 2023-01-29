@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{{user}}
+    <form method="post">
+    <table>
+        <tr>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        {% for rows in cal %}
+        <tr>
+            {% for day in rows %}
+            <td>
+                {% if day != 0 %}
+                {{day}}
+                <!-- <label for="{{day}}">Status:</label> -->
+                <select name="{{day}}" id="day">
+                    <option value="Leave">L</option>
+                    <option value="Working">W</option>
+                    <option value="HalfDay">HD</option>
+                    <option value="Holiday">H</option>
+                </select>
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+    <br>
+    <br>
+    
+</body>
+</html>
